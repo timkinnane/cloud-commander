@@ -1,0 +1,49 @@
+{
+  "name": "cloud-commander",
+  "version": "0.0.0",
+  "description": "Command cloud services from a reactive CLI",
+  "main": "lib/index.js",
+  "author": "Tim Kinnane <timkinnane@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "eslintConfig": {
+    "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "error"
+    }
+  },
+  "standardx": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/react": "^16.9.21",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "snazzy": "^8.0.0",
+    "standardx": "^5.0.0",
+    "typescript": "^3.8.2"
+  },
+  "scripts": {
+    "lint": "standardx **/*.ts | snazzy",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "yarn type-check -- --watch",
+    "start": "babel-node src --extensions '.ts,.tsx' index.tsx",
+    "build": "yarn build:types && yarn build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
+  },
+  "dependencies": {
+    "ink": "^2.7.1",
+    "react": "^16.12.0"
+  }
+}
